@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform[] _waypoints;
+    [SerializeField] float _turnSpeed = 10;
 
     int _waypointIndex;
     NavMeshAgent _agent;
@@ -11,13 +12,24 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _agent.updatePosition = false;
     }
     void Update()
     {
+        FaceTarget(_agent.steeringTarget);
         if (_agent.remainingDistance < .5f)
         {
             _agent.SetDestination(GetNextWaypoint());
         }
+    }
+
+    void FaceTarget(Vector3 newTarget)
+    {
+        Vector3 directionToTarget = newTarget - transform.position;
+        directionToTarget.y = 0; // removes vertical rotation
+        Quaternion newRotation = Quaternion.LookRotation(directionToTarget);
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, _turnSpeed * Time.deltaTime);
     }
 
     Vector3 GetNextWaypoint()
