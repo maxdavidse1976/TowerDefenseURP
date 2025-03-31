@@ -12,7 +12,8 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _agent.updatePosition = false;
+        _agent.updateRotation = false;
+        _agent.avoidancePriority = Mathf.RoundToInt(_agent.speed * 10);
     }
     void Update()
     {
