@@ -2156,10 +2156,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af18ee33e2ddfa848978ee3279f4c2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentWave:
+    basicEnemy: 4
+    fastEnemy: 2
   _respawnPoint: {fileID: 4391148086422804209}
+  _spawnCooldown: 0
   _basicEnemy: {fileID: 4885406565986310980, guid: 175398593c18ce641b6a28d4beb6ca25, type: 3}
-  spawnCooldown: 3
-  spawnTimer: 0
+  _fastEnemy: {fileID: 8091708577069364367, guid: 99105be9fd3c9524aa8a92cd296eaa8f, type: 3}
 --- !u!1 &944240233
 GameObject:
   m_ObjectHideFlags: 0
@@ -4627,7 +4630,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3769895662384529278, guid: 1d9f3f6fa68f8d848b1b5b4a26be5ce4, type: 3}
       propertyPath: m_Name
-      value: Player_Castle
+      value: Castle
       objectReference: {fileID: 0}
     - target: {fileID: 5089109935924181733, guid: 1d9f3f6fa68f8d848b1b5b4a26be5ce4, type: 3}
       propertyPath: m_LocalPosition.x
